@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>斗地主 · 知识库入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      background: linear-gradient(145deg, #fbe9d7 0%, #f6d5b3 50%, #edc7a0 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+    }
+
+    .page-wrap {
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    /* 主卡片容器 */
+    .content-card {
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 20px 40px -12px rgba(140, 80, 40, 0.25);
+      padding: 2.5rem 2.8rem;
+      transition: box-shadow 0.2s;
+    }
+
+    @media (max-width: 640px) {
+      .content-card {
+        padding: 1.8rem 1.2rem;
+        border-radius: 24px;
+      }
+    }
+
+    /* 标题区 */
+    .hero-title {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #3d2c1b;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: #6b4d33;
+      border-left: 4px solid #dba97a;
+      padding-left: 1rem;
+      margin-bottom: 2rem;
+      background: #fcf6ef;
+      padding: 0.6rem 1rem 0.6rem 1.2rem;
+      border-radius: 0 12px 12px 0;
+    }
+
+    /* 介绍块 */
+    .intro-block {
+      background: #faf5ef;
+      border-radius: 20px;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .intro-block p {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: #2d221a;
+      margin-bottom: 0.6rem;
+    }
+
+    .intro-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 目录感 —— 网格卡片 */
+    .directory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0 1.8rem;
+    }
+
+    .dir-item {
+      background: #f8efe6;
+      border-radius: 24px;
+      padding: 1.2rem 1.2rem 1.4rem;
+      transition: background 0.2s, transform 0.1s;
+      border: 1px solid #eddccb;
+    }
+
+    .dir-item:hover {
+      background: #f3e6d9;
+      transform: translateY(-2px);
+    }
+
+    .dir-item h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #4a3321;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .dir-item h3::before {
+      content: "▹";
+      color: #b8845c;
+      font-size: 1.2rem;
+    }
+
+    .dir-item p {
+      font-size: 0.9rem;
+      color: #5c4633;
+      line-height: 1.5;
+    }
+
+    /* 提示区 */
+    .tip-area {
+      background: #e9dccf;
+      border-radius: 20px;
+      padding: 1.2rem 1.6rem;
+      margin: 1.2rem 0 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.4rem 1rem;
+    }
+
+    .tip-label {
+      font-weight: 600;
+      color: #3f2d1b;
+      font-size: 0.9rem;
+      background: #d9c4b0;
+      padding: 0.15rem 0.9rem;
+      border-radius: 30px;
+      white-space: nowrap;
+    }
+
+    .tip-text {
+      color: #2f2218;
+      font-size: 0.95rem;
+    }
+
+    /* 相关信息区 (FAQ 摘要) */
+    .info-section {
+      margin: 1.8rem 0 1.2rem;
+    }
+
+    .info-section h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #3d2b19;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid #e3cfbb;
+    }
+
+    .faq-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .faq-item {
+      background: #f6ede4;
+      border-radius: 18px;
+      padding: 0.8rem 1.2rem;
+      border-left: 5px solid #cfa67b;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #3f2c1b;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-a {
+      color: #594431;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* 链接样式（圆角按钮感） */
+    .inline-link {
+      color: #6b3f1f;
+      background: #efe0d1;
+      padding: 0.15rem 0.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+
+    .inline-link:hover {
+      background: #dbba9c;
+      color: #2d1b0e;
+      border-color: #b88d6b;
+    }
+
+    .inline-link:active {
+      background: #c9a787;
+    }
+
+    /* 场景区 */
+    .scene-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.6rem 0 0.8rem;
+    }
+
+    .scene-chip {
+      background: #f2e2d3;
+      border-radius: 40px;
+      padding: 0.3rem 1.2rem 0.3rem 1rem;
+      font-size: 0.85rem;
+      color: #3d2c1a;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .scene-chip::before {
+      content: "♢";
+      opacity: 0.6;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      margin-top: 2.2rem;
+      border-top: 1px solid #e5d4c2;
+      padding-top: 1.2rem;
+      font-size: 0.85rem;
+      color: #66513d;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .footer-note a {
+      color: #5f3f27;
+      text-decoration: none;
+      background: #f0e2d4;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .footer-note a:hover {
+      background: #ddc7b2;
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      .directory-grid {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <div class="content-card">
+
+    <!-- hero 区 -->
+    <div class="hero-title">斗地主 · 知识库</div>
+    <div class="hero-sub">稳定信息入口 · 规则 · 技巧 · 常见问题</div>
+
+    <!-- 说明区：介绍块 -->
+    <div class="intro-block">
+      <p><strong>关于这个知识库</strong><br>
+      这里整理了与 <a href="https://root-doudizhu.com" class="inline-link">斗地主</a> 相关的常用资料、规则说明、牌型解析以及常见疑问。内容保持中立、平实，适合希望快速了解或查阅细节的玩家。</p>
+      <p>无论你是刚开始接触，还是想回顾某些规则细节，都可以通过下方目录找到对应要点。所有信息均以稳定页面形式呈现，便于随时参考。</p>
+    </div>
+
+    <!-- 目录感布局：网格卡片 -->
+    <div class="directory-grid">
+      <div class="dir-item">
+        <h3>基本规则</h3>
+        <p>发牌、叫地主、出牌顺序、牌型大小、胜负判定。</p>
+      </div>
+      <div class="dir-item">
+        <h3>牌型图鉴</h3>
+        <p>单张、对子、三带、顺子、连对、飞机、炸弹、火箭。</p>
+      </div>
+      <div class="dir-item">
+        <h3>记分说明</h3>
+        <p>底分、倍数、春天、反春、炸弹加倍的计算方式。</p>
+      </div>
+      <div class="dir-item">
+        <h3>常见误区</h3>
+        <p>三带能否带两张、连对最小起手、王炸是否最大。</p>
+      </div>
+    </div>
+
+    <!-- 提示区 -->
+    <div class="tip-area">
+      <span class="tip-label">提示</span>
+      <span class="tip-text">本知识库持续更新，页面内容以规则原文和常见实践为准。</span>
+    </div>
+
+    <!-- 相关信息区 (FAQ 摘要) -->
+    <div class="info-section">
+      <h2>相关信息 · 常见疑问</h2>
+      <div class="faq-summary">
+        <div class="faq-item">
+          <div class="faq-q">一副牌有多少张？包含哪些牌？</div>
+          <div class="faq-a">标准斗地主使用一副 54 张扑克牌，包括大小王、2、A、K、Q、J、10、9、8、7、6、5、4、3，每种点数 4 张。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">为什么有时叫地主轮空？</div>
+          <div class="faq-a">从随机玩家开始，按逆时针轮流叫分（1 分、2 分、3 分或不叫），若无人叫分则重新发牌。部分变体规则略有不同。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">炸弹和火箭的区别？</div>
+          <div class="faq-a">炸弹是四张相同点数，火箭是大小王一起出。火箭大于任何炸弹，是游戏中最大的牌型。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 场景区 -->
+    <div class="scene-row">
+      <span class="scene-chip">三人局</span>
+      <span class="scene-chip">四人两副牌（扩展）</span>
+      <span class="scene-chip">经典计分</span>
+      <span class="scene-chip">休闲对局</span>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+      <span>© 资料整理 · 非官方</span>
+      <span><a href="https://root-doudizhu.com">斗地主</a> · 稳定入口</span>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
