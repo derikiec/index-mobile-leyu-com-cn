@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星空体育 · 简明使用指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f9f8f6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1e2a32;
+            line-height: 1.7;
+            padding: 2.5rem 1.2rem;
+        }
+        .page {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        /* 标题层级 — 极简、克制 */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+            color: #0b1a26;
+            line-height: 1.2;
+        }
+        .subhead {
+            font-size: 1rem;
+            color: #6f7b85;
+            margin-bottom: 2.8rem;
+            border-left: 3px solid #d0d7de;
+            padding-left: 1rem;
+        }
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-top: 2.8rem;
+            margin-bottom: 0.8rem;
+            color: #1f2d38;
+        }
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-top: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #253842;
+        }
+        p {
+            margin-bottom: 1.1rem;
+        }
+        /* 卡片 — 清淡微边界 */
+        .card {
+            background: #ffffff;
+            border: 1px solid #e9edf0;
+            border-radius: 14px;
+            padding: 1.8rem 1.8rem 1.8rem 2rem;
+            margin: 2.2rem 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.015);
+        }
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.2rem 0 0.2rem 0;
+        }
+        .highlight-list li {
+            padding: 0.35rem 0 0.35rem 1.8rem;
+            position: relative;
+            font-size: 0.98rem;
+        }
+        .highlight-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #4b6a7f;
+            font-size: 0.85rem;
+        }
+        /* 使用场景 网格 */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .scenario-item {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #eef2f5;
+            padding: 1.2rem 1rem;
+        }
+        .scenario-item .emoji-bg {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        .scenario-item h4 {
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+            color: #1a2b36;
+        }
+        .scenario-item p {
+            font-size: 0.9rem;
+            color: #4a5a66;
+            margin-bottom: 0;
+        }
+        /* 提示块 */
+        .tip-box {
+            background-color: #f0f2f4;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid #8899a6;
+            font-size: 0.95rem;
+        }
+        .tip-box strong {
+            color: #1f353f;
+        }
+        /* FAQ 摘要 — 极简折叠感 */
+        .faq-item {
+            border-bottom: 1px solid #e4e9ed;
+            padding: 0.9rem 0;
+        }
+        .faq-item:first-of-type {
+            border-top: 1px solid #e4e9ed;
+        }
+        .faq-q {
+            font-weight: 500;
+            color: #1a2b36;
+            font-size: 0.98rem;
+            margin-bottom: 0.25rem;
+        }
+        .faq-a {
+            font-size: 0.92rem;
+            color: #4b5c68;
+            padding-left: 0.1rem;
+        }
+        a {
+            color: #266a8a;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.1s ease;
+        }
+        a:hover {
+            border-bottom-color: #266a8a;
+        }
+        .site-link-block {
+            margin: 2.2rem 0 0.5rem 0;
+            padding: 1.2rem 0;
+            font-size: 1rem;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #e6eaee;
+            margin: 2.2rem 0 1.8rem 0;
+        }
+        .footer-note {
+            font-size: 0.85rem;
+            color: #7c8c98;
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e9edf2;
+        }
+        @media (max-width: 500px) {
+            body { padding: 1.8rem 1rem; }
+            h1 { font-size: 1.8rem; }
+            .scenario-grid { grid-template-columns: 1fr; }
+            .card { padding: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <h1>星空体育</h1>
+    <div class="subhead">从了解开始 · 一份简明产品指南</div>
+
+    <p>
+        如果你正在寻找一个可以关注体育动态、赛事信息或相关内容的平台，<a href="https://portals-xingkong.com">星空体育</a>或许值得你花五分钟了解。这里没有复杂的术语堆砌，只有围绕体育活动所整理的信息结构和基础服务。下面这份指南从“它是什么”“怎么用”“留意什么”三个角度展开，希望能帮你快速建立认知。
+    </p>
+
+    <!-- 摘要卡片 -->
+    <div class="card">
+        <h3 style="margin-top:0;">📋 产品是什么</h3>
+        <p><strong>星空体育</strong> 是一个以赛事浏览与信息获取为主要方向的内容聚合型站点。它并非官方赛事平台，而是整合公开信息、提供浏览入口的个人项目。你可以把它理解为一个围绕体育兴趣的轻量信息窗——方便查找比赛结果、了解项目动态，或者单纯在空闲时看点体育相关内容。</p>
+        <p style="margin-bottom:0; color:#3e5665;">适用人群：对体育感兴趣但不想被信息轰炸的人；偶尔需要快速浏览赛事动态的普通用户。</p>
+    </div>
+
+    <h2>✨ 几个实用亮点</h2>
+    <ul class="highlight-list">
+        <li><strong>信息集中</strong> — 避免在多个页面之间反复跳转，常用赛事与数据被整理在相对固定的栏目下。</li>
+        <li><strong>界面干净</strong> — 以阅读为首要目标，没有弹窗、自动播放或过度装饰。</li>
+        <li><strong>响应及时</strong> — 页面结构轻量，在移动设备上打开也很流畅，不消耗过多流量。</li>
+        <li><strong>保持克制</strong> — 不推荐、不预测、不夸大，你看到的就是经过筛选的公开信息。</li>
+    </ul>
+
+    <h2>🧭 使用建议</h2>
+    <p>根据大多数人的浏览习惯，你可以尝试以下三种使用节奏：</p>
+
+    <div class="scenario-grid">
+        <div class="scenario-item">
+            <span class="emoji-bg">🔍</span>
+            <h4>日常速览</h4>
+            <p>每天花 3–5 分钟浏览首页更新，了解主流赛事的大致动态，不追求深度。</p>
+        </div>
+        <div class="scenario-item">
+            <span class="emoji-bg">📆</span>
+            <h4>赛前准备</h4>
+            <p>关注你喜欢的项目赛程，提前了解时间与对阵，方便安排观看计划。</p>
+        </div>
+        <div class="scenario-item">
+            <span class="emoji-bg">🧘</span>
+            <h4>安静查阅</h4>
+            <p>深夜或周末打开，当作一份体育阅读材料，不受社交干扰。</p>
+        </div>
+        <div class="scenario-item">
+            <span class="emoji-bg">📱</span>
+            <h4>移动伴随</h4>
+            <p>通勤或排队时轻量浏览，页面在小屏幕上同样清晰易读。</p>
+        </div>
+    </div>
+
+    <!-- 提示 + 访问说明 —— 克制但坦诚 -->
+    <div class="tip-box">
+        <strong>🛡️ 访问说明</strong><br>
+        <ul style="margin: 0.5rem 0 0 1.2rem; padding:0; list-style: disc;">
+            <li>本网站属于非官方信息整理项目，所有内容均来自公开渠道，不对信息的绝对准确性或时效性作保证。</li>
+            <li>使用过程中如遇到链接失效、样式异常等情况，可稍后再试，或通过页面提供的联系方式反馈（如果有）。</li>
+            <li>建议使用最新版 Chrome、Safari 或 Firefox 浏览器获得最佳显示效果。</li>
+            <li>这里不收集任何个人隐私数据，没有用户注册或追踪要求。</li>
+        </ul>
+    </div>
+
+    <h2>❓ 常见疑问摘要</h2>
+    <div class="faq-item">
+        <div class="faq-q">这个网站需要注册才能用吗？</div>
+        <div class="faq-a">不需要。所有内容对访客开放，无需登录或留下任何信息。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">内容更新频率如何？</div>
+        <div class="faq-a">视赛事周期而定，热门期间更新相对密集，休赛期则以整理性内容为主。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">移动端和电脑端体验一样吗？</div>
+        <div class="faq-a">布局会自适应调整，但核心信息结构一致。建议横屏或大屏阅读表格类内容。</div>
+    </div>
+    <div class="faq-item" style="border-bottom: none;">
+        <div class="faq-q">我可以在社交平台分享这里的链接吗？</div>
+        <div class="faq-a">当然可以。只需要注明来源为 <a href="https://portals-xingkong.com">星空体育</a> 即可，非商业用途共享很欢迎。</div>
+    </div>
+
+    <!-- 自然嵌入链接的句子块 -->
+    <div class="site-link-block">
+        <p>如果你已经大致了解了以上内容，想直接进入页面亲自感受一下，可以随时打开 <a href="https://portals-xingkong.com">星空体育</a>。建议第一次浏览时从首页的“近期动态”栏目开始，这样能最快了解网站的信息组织风格。</p>
+    </div>
+
+    <hr>
+
+    <p style="font-size:0.95rem; color:#3d5668;">
+        最后补充一句：体育信息的价值在于真实和克制。这个页面不会告诉你“必看”“错过后悔”之类的话，
+        因为好的工具不需要夸张的修辞。<br>
+        希望<a href="https://portals-xingkong.com">星空体育</a>能在你关注体育的日常里，扮演一个安静而可靠的角落。
+    </p>
+
+    <div class="footer-note">
+        星空体育 · 日常指引 · 信息开放
+    </div>
+
+</div>
+</body>
+</html>
